@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "461571642901",
+    "project_id": "tudu-with-firebase",
+    "storage_bucket": "tudu-with-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461571642901:android:9a49a96d2188885bd0201c",
+        "android_client_info": {
+          "package_name": "com.example.myfiretodo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461571642901-er3kjavsm6387hckqh60m4le2kemspgq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.myfiretodo",
+            "certificate_hash": "c9ad192a5c352f8e08725b86955bec9d0a89862b"
+          }
+        },
+        {
+          "client_id": "461571642901-mu73v5811nt0bdcf9dntomggd48tt5o0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC5jSjtdHzUinA8aCM35YGQR8IQPnHQRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461571642901-mu73v5811nt0bdcf9dntomggd48tt5o0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

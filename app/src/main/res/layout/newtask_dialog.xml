@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/etTask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:inputType="textPersonName"
+        android:hint="Enter Task Name"
+        android:padding="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/etDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="text|textMultiLine"
+        android:padding="10dp"
+        android:hint="Enter Description"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:text="Save"
+        android:id="@+id/btnSave"
+        android:backgroundTint="#096C0D"
+        android:textSize="18sp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_margin="10dp"
+        android:text="Cancel"
+        android:id="@+id/btnCancel"
+        android:backgroundTint="#F41818"
+        android:textSize="18sp"/>
+
+
+
+</LinearLayout>
+
+
+
+</LinearLayout>
