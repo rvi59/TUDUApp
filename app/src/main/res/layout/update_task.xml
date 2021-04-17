@@ -47,7 +47,7 @@
             android:layout_margin="10dp"
             android:text="Delete"
             android:id="@+id/btnDelete"
-            android:backgroundTint="#096C0D"
+            android:backgroundTint="#EC3131"
             android:textSize="18sp"/>
 
         <Button
@@ -56,7 +56,7 @@
             android:layout_margin="10dp"
             android:text="Update"
             android:id="@+id/btnUpdate"
-            android:backgroundTint="#F41818"
+            android:backgroundTint="#C35A38"
             android:textSize="18sp"/>
 
 

@@ -47,7 +47,7 @@
         android:layout_margin="10dp"
         android:text="Save"
         android:id="@+id/btnSave"
-        android:backgroundTint="#096C0D"
+        android:backgroundTint="#1D9E23"
         android:textSize="18sp"/>
 
     <Button

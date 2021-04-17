@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
 
         mProgressDialog.setMessage("Updating Your Task");
         mProgressDialog.setCanceledOnTouchOutside(true);
-        mProgressDialog.show();
+        //mProgressDialog.show();
 
         uTask.setText(title);
         uTask.setSelection(title.length());
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 String date = DateFormat.getDateInstance().format(new Date());
 
                 Todomodel todomodel = new Todomodel(title, description, date);
-
+                mProgressDialog.show();
                 mDatabaseReference.child(key).setValue(todomodel).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
