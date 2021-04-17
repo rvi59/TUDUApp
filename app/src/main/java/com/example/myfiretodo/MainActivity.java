@@ -192,7 +192,6 @@ public class MainActivity extends AppCompatActivity {
                         updateTask();
                     }
                 });
-
             }
 
             @NonNull
@@ -206,7 +205,6 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(adapter);
         adapter.startListening();
-
     }
 
 
@@ -219,13 +217,13 @@ public class MainActivity extends AppCompatActivity {
 
         //assigning builder to alertDialog
         AlertDialog alertDialog = builder.create();
-        alertDialog.setCancelable(false);
+        alertDialog.setCancelable(true);
 
         EditText uTask = view.findViewById(R.id.etUTask);
         EditText uDesc = view.findViewById(R.id.etUDesc);
 
         mProgressDialog.setMessage("Updating Your Task");
-        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.setCanceledOnTouchOutside(true);
         mProgressDialog.show();
 
         uTask.setText(title);
@@ -260,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(MainActivity.this, "Updation Failed"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
+                        mProgressDialog.dismiss();
                     }
                 });
 
