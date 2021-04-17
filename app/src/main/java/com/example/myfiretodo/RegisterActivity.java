@@ -107,6 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mDatabaseReference.push().setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            mAuth.signOut();
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                             finish();
                             mProgressDialog.dismiss();

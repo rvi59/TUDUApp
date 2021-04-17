@@ -10,6 +10,13 @@ public class Todomodel {
         this.date = date;
     }
 
+    public Todomodel(String title, String description, String date) {
+        this.title = title;
+        this.description = description;
+        this.date = date;
+    }
+
+
     public Todomodel() {
     }
 

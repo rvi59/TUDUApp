@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewDate;
 
 
+    private String key = "";
+    private String title = "";
+    private String description = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //        layoutManager.setReverseLayout(true);
 //        layoutManager.setStackFromEnd(true);
 
@@ -175,6 +181,18 @@ public class MainActivity extends AppCompatActivity {
                 holder.setTitle(model.getTitle());
                 holder.setDiscription(model.getDescription());
 
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        key = getRef(position).getKey();
+                        title = model.getTitle();
+                        description = model.getDescription();
+                        //Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
+                        updateTask();
+                    }
+                });
+
             }
 
             @NonNull
@@ -188,6 +206,93 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setAdapter(adapter);
         adapter.startListening();
+
+    }
+
+
+    //Updating Task
+    private void updateTask() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View view = inflater.inflate(R.layout.update_task, null);
+        builder.setView(view);
+
+        //assigning builder to alertDialog
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+
+        EditText uTask = view.findViewById(R.id.etUTask);
+        EditText uDesc = view.findViewById(R.id.etUDesc);
+
+        mProgressDialog.setMessage("Updating Your Task");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.show();
+
+        uTask.setText(title);
+        uTask.setSelection(title.length());
+
+        uDesc.setText(description);
+        uDesc.setSelection(description.length());
+
+        Button buttonDel = view.findViewById(R.id.btnDelete);
+        Button buttonUpdate = view.findViewById(R.id.btnUpdate);
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                title = uTask.getText().toString().trim();
+                description = uDesc.getText().toString().trim();
+                String date = DateFormat.getDateInstance().format(new Date());
+
+                Todomodel todomodel = new Todomodel(title, description, date);
+
+                mDatabaseReference.child(key).setValue(todomodel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(MainActivity.this, "Task Updated", Toast.LENGTH_SHORT).show();
+                            mProgressDialog.dismiss();
+                            alertDialog.dismiss();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Updation Failed"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        alertDialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
+
+
+        buttonDel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mDatabaseReference.child(key).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(MainActivity.this, "Task Deleted sussfully", Toast.LENGTH_SHORT).show();
+                            mProgressDialog.dismiss();
+                            alertDialog.dismiss();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(MainActivity.this, "Deletion Failed"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        mProgressDialog.dismiss();
+                        alertDialog.dismiss();
+                    }
+                });
+            }
+        });
+
+
+        alertDialog.show();
 
     }
 
@@ -206,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.logout:
                 mAuth.signOut();
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 Toast.makeText(this, "Logout", Toast.LENGTH_SHORT).show();
                 finish();
         }
