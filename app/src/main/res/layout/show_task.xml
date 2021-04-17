@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    app:cardElevation="10dp"
+    android:elevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="#4CAF50"
+            android:gravity="center"
+            android:padding="1dp"
+            android:layout_marginTop="3dp"
+            android:text="JAN 06, 2021"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvSTask"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Task"
+            android:maxLines="1"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+
+        <TextView
+            android:id="@+id/tvSDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="10dp"
+            android:text="Description"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>
