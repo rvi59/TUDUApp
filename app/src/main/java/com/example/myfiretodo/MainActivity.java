@@ -100,8 +100,6 @@ public class MainActivity extends AppCompatActivity {
         mTextViewDate.setText(todayDate);
 
 
-
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         layoutManager.setReverseLayout(true);
@@ -118,13 +116,6 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
-
-
-
 
     }
 
