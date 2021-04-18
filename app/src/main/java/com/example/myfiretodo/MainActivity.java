@@ -34,8 +34,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     private ProgressDialog mProgressDialog;
     private RecyclerView mRecyclerView;
-    private TextView mTextViewDate;
+    private TextView mTextViewDate, mTextViewQuotes;
 
 
     private String key = "";
@@ -69,15 +72,40 @@ public class MainActivity extends AppCompatActivity {
         mProgressDialog = new ProgressDialog(this);
         mRecyclerView = findViewById(R.id.notesRecycler);
         mTextViewDate = findViewById(R.id.todayDate);
+        mTextViewQuotes = findViewById(R.id.myQuotes);
+        mTextViewQuotes.setSelected(true);
+
+        List<String> myQuotes = new ArrayList<>();
+
+        myQuotes.add("The worth of a book is to be measured by what you can carry away from it.");
+        myQuotes.add("I thank you for nothing, because I understand nothing.");
+        myQuotes.add("Anger is the ultimate destroyer of your own peace of mind.");
+        myQuotes.add("Children really brighten up a household. They never turn the lights off.");
+        myQuotes.add("Appreciate those early influences and what they've done for you.");
+        myQuotes.add("Emotional empathy is what motivates us to help others.");
+        myQuotes.add("Make the decision, make another. Remake one past, you cannot.");
+        myQuotes.add("We must dare to think unthinkable thoughts.");
+        myQuotes.add("If you want to see a rainbow you have to learn to see the rain.");
+        myQuotes.add("Reading without reflecting is like eating without digesting.");
+
+        Random random = new Random();
+
+        int randomItem = random.nextInt(myQuotes.size());
+        String randomElement = myQuotes.get(randomItem);
+
+        mTextViewQuotes.setText(randomElement);
+
 
         String todayDate = DateFormat.getDateInstance().format(new Date());
         mTextViewDate.setText(todayDate);
 
 
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
-//        layoutManager.setReverseLayout(true);
-//        layoutManager.setStackFromEnd(true);
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        //RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
 
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -90,6 +118,14 @@ public class MainActivity extends AppCompatActivity {
                 //Toast.makeText(MainActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
+
+
+
+
     }
 
     //Adding Task
@@ -317,4 +353,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

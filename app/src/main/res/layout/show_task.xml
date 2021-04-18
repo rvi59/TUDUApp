@@ -24,20 +24,27 @@
             android:layout_marginTop="3dp"
             android:text="JAN 06, 2021"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tvSTask"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Task"
             android:maxLines="1"
             android:textStyle="bold"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="#DCDADA"/>
 
 
         <TextView
@@ -45,12 +52,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:text="Description"
             android:textStyle="bold"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="15sp" />
 
 
 
