@@ -195,7 +195,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseRecyclerOptions<Todomodel> options = new FirebaseRecyclerOptions.Builder<Todomodel>()
                 .setQuery(mDatabaseReference, Todomodel.class)
                 .build();
@@ -203,11 +202,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Todomodel, TaskViewholder> adapter = new FirebaseRecyclerAdapter<Todomodel, TaskViewholder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull TaskViewholder holder, int position, @NonNull Todomodel model) {
-
                 holder.setDate(model.getDate());
                 holder.setTitle(model.getTitle());
                 holder.setDiscription(model.getDescription());
-
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -233,6 +230,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
+
 
 
     //Updating Task
@@ -283,7 +282,7 @@ public class MainActivity extends AppCompatActivity {
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(MainActivity.this, "Updation Failed"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Update Failed"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         alertDialog.dismiss();
                         mProgressDialog.dismiss();
                     }
