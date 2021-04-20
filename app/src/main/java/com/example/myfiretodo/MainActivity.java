@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -194,6 +195,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        mProgressDialog.setMessage("Adding Your Task");
+        mProgressDialog.setCanceledOnTouchOutside(false);
+        mProgressDialog.show();
         FirebaseRecyclerOptions<Todomodel> options = new FirebaseRecyclerOptions.Builder<Todomodel>()
                 .setQuery(mDatabaseReference, Todomodel.class)
                 .build();
@@ -215,6 +219,7 @@ public class MainActivity extends AppCompatActivity {
                         updateTask();
                     }
                 });
+                mProgressDialog.dismiss();
             }
 
             @NonNull
@@ -225,8 +230,11 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
+
         mRecyclerView.setAdapter(adapter);
         adapter.startListening();
+
+
     }
 
 
