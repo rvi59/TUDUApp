@@ -142,9 +142,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String title = editTextTitle.getText().toString();
-                String description = editTextDescription.getText().toString();
-
+                String title = editTextTitle.getText().toString().trim();
+                String description = editTextDescription.getText().toString().trim();
                 String taskId = mDatabaseReference.push().getKey();
                 String date = DateFormat.getDateInstance().format(new Date());
 
@@ -222,7 +221,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public TaskViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_task, parent, false);
-
                 return new TaskViewholder(view);
             }
         };
